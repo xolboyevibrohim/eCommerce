@@ -12,6 +12,10 @@
         position: absolute;
     }
 }
+.cate-image{
+	width: 100px;
+	height: 100px;
+}
 
 .icon-section {
 	margin: 0 0 3em;

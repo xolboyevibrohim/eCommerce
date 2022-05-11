@@ -35,7 +35,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <div class="sidebar" data-background-color="black" data-active-color="warning">
 
     <!--
 		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
@@ -45,27 +45,27 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="" class="simple-text">
-                    Creative Tim
+                    eCommerce
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
-                    <a href="dashboard.html">
+                <li class="{{ Request::is('dashboard') ? 'active' : '' ; }}">
+                    <a href="{{ url('dashboard') }}">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user.html">
+                <li class="{{ Request::is('categories') ? 'active' : '' ; }}">
+                    <a href="{{ url('categories') }}">
                         <i class="ti-user"></i>
-                        <p>User Profile</p>
+                        <p>Category</p>
                     </a>
                 </li>
-                <li>
-                    <a href="table.html">
+                <li class="{{ Request::is('add-category') ? 'active' : '' ; }}">
+                    <a href="{{ url('add-category') }}">
                         <i class="ti-view-list-alt"></i>
-                        <p>Table List</p>
+                        <p>Add Category</p>
                     </a>
                 </li>
                 <li>
@@ -137,6 +137,21 @@
 								<p>Settings</p>
                             </a>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  <i class="ti-user"></i>
+                            </a>
+                            
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Profile</a></li>
+                              <li>  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
+                                    @csrf 
+                                </form></li>
+                            </ul>
+                      </li>
                     </ul>
 
                 </div>
@@ -172,7 +187,7 @@
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="https://www.instagram.com/_kholboyev/">Kholboyev_Ibrokhim</a>
                 </div>
             </div>
         </footer>
@@ -204,8 +219,16 @@
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="{{ asset ('admin/js/demo.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session('status'))
+        <script>
+            swal("Good job!", "{{ session('status') }}", "success");
+            // swal("{{ session('status') }}");
+        </script>
+        
+    @endif
 
-	<script type="text/javascript">
+	{{-- <script type="text/javascript">
     	$(document).ready(function(){
 
         	demo.initChartist();
@@ -220,6 +243,6 @@
             });
 
     	});
-	</script>
+	</script> --}}
 
 </html>

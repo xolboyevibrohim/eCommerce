@@ -68,6 +68,18 @@
                         <p>Add Category</p>
                     </a>
                 </li>
+                <li class="{{ Request::is('products') ? 'active' : '' ; }}">
+                    <a href="{{ url('products') }}">
+                        <i class="ti-user"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
+                <li class="{{ Request::is('add-products') ? 'active' : '' ; }}">
+                    <a href="{{ url('add-products') }}">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Add Products</p>
+                    </a>
+                </li>
                 <li>
                     <a href="typography.html">
                         <i class="ti-text"></i>
@@ -78,6 +90,18 @@
                     <a href="icons.html">
                         <i class="ti-pencil-alt2"></i>
                         <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="ti-map"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="ti-bell"></i>
+                        <p>Notifications</p>
                     </a>
                 </li>
                 <li>

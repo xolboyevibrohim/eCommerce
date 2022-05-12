@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\FrontendController;
+use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\FrontendController as FrontendFrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,19 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[FrontendController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    // category
+    
     Route::get('dashboard',[FrontendController::class, 'index']);
+
+    // category
     Route::get('categories',[CategoryController::class, 'index']);
     Route::get('add-category',[CategoryController::class, 'add']);
     Route::post('insert-category',[CategoryController::class, 'insert']);

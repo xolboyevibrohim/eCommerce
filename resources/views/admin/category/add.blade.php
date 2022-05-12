@@ -5,7 +5,7 @@
 <div class="bg bg-dark">
     <h3 class="bg bg-white">Add category</h3>
 </div>
-<form action="{{ route('insert') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ url('insert-category') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row ">
         <div class="col-md-6 mb-3 ">

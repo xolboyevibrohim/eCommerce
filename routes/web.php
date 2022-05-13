@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Frontend\FrontendController as FrontendFrontendController;
-
+use App\Http\Controllers\Admin\FrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +22,14 @@ use App\Http\Controllers\Frontend\FrontendController as FrontendFrontendControll
 //     return view('welcome');
 // });
 Route::get('/',[FrontendController::class, 'index']);
+Route::get('category',[FrontendController::class, 'category']);
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     
-    Route::get('dashboard',[FrontendController::class, 'index']);
+    Route::get('dashboard',[FrontController::class, 'index']);
 
     // category
     Route::get('categories',[CategoryController::class, 'index']);

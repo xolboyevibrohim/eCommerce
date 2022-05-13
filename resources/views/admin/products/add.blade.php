@@ -10,7 +10,6 @@
     <div class="row ">
         <div class="col-md-12 mb-3">
             <select class="form-select"  name="cate_id">
-                <option selected>Open this select menu</option>
                 <option value="">Select a Category</option>
                 @foreach ($category as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -78,10 +77,6 @@
         <div class="col-md-12 mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
     </div>
 </form>
-
-
-
 @endsection

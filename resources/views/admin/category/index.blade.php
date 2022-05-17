@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div class=" bg-danger">
+<div class=" bg-dark">
     <h3>
         Category Page
     </h3>

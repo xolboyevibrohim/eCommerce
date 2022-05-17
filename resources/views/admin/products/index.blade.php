@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div class=" bg-danger">
+<div class=" bg-white">
     <h3>
         Product Page
     </h3>

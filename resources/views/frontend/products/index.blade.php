@@ -1,26 +1,33 @@
 @extends('layouts.front')
 
 @section('title')
-    {{ $category->name }}
+{{ $category->name }}
 @endsection
 
 @section('content')
+<div class="py-3 mb-4 shadow-sm bg-warning border-top">
+    <div class="container">
+        <h6 class="mb-0"> Collections / {{ $category->name }} </h6>
+    </div>
+</div>
 <div class="py-5">
     <div class="container">
         <div class="row">
             <h2 class="mb-3"> {{ $category->name }}</h2>
-                @foreach ( $products as $prod)
-                    <div class="col-md-3 mb-3">
-                        <div class="card">
-                            <img src="{{ asset('assets/uploads/products/'.$prod->image) }}" alt="product image">
-                            <div class="card-body">
-                                <h3>{{ $prod->name }}</h3>
-                                <span class="float-start"><s>{{ $prod->original_price }} usd</s></span>
-                                <span class="float-end">{{ $prod->selling_price }} usd</span>
-                            </div>
+            @foreach ( $products as $prod)
+            <div class="col-md-3 mb-3">
+                <a href="{{ url('category/'.$category->slug.'/'.$prod->slug) }}">
+                    <div class="card">
+                        <img src="{{ asset('assets/uploads/products/'.$prod->image) }}" alt="product image">
+                        <div class="card-body">
+                            <h3>{{ $prod->name }}</h3>
+                            <span class="float-start"><s>{{ $prod->original_price }} usd</s></span>
+                            <span class="float-end">{{ $prod->selling_price }} usd</span>
                         </div>
                     </div>
-                @endforeach
+                </a>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>

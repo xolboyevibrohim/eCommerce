@@ -34,11 +34,21 @@
             @yield('content')
         </div>
           
-
+ 
     <!-- Scripts -->
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" ></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" ></script>
+    <script src="{{ asset('frontend/js/custom.js') }}" ></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @if (session('status'))
+        <script>
+            // swal("Good job!", "{{ session('status') }}", "success");
+            swal("{{ session('status') }}");
+        </script>
+        
+    @endif
     @yield('scripts')
 </body>
 </html>

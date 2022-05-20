@@ -4,21 +4,16 @@
 
 
 @section('content')
-<div class="py-3 mb-4 shadow-sm bg-warning border-top">
-    <div class="container">
-        <h6 class="mb-0">Collection / {{ $product->category->name }}  / {{ $product->name }} </h6>
-    </div>
-</div>
-<div class="py-3 mb-4 shadow-sm bg-warning border-top">
+<div class="py-3 mb-4 shadow-sm bg-info border-top">
     <div class="container">
         <h6 class="mb-0">
-            <a href="{{ url('category') }}">
-                Collection
-            </a> /
-            <a href="{{ url('category/'.$product->category->slug) }}">
-                {{ $product->category->name }}
-            </a> /
-            <a href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
+            <a class="text-white fs-5 text text-decoration-none" href="{{ url('category') }}">
+                Collection /
+            </a> 
+            <a class="text-white fs-5 text text-decoration-none" href="{{ url('view-category/'.$product->category->slug) }}">
+                {{ $product->category->name }} /
+            </a> 
+            <a class="text-white fs-5 text text-decoration-none" href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
                 {{ $product->name }}             
             </a>
         </h6>

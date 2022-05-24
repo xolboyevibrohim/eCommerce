@@ -38,10 +38,15 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                      <li>
-                                        <a class="dropdown-item" href="#">
-                                           My profile
+                                        <a class="dropdown-item" href="{{ url('my-orders') }}">
+                                           My Orders
                                         </a>
                                     </li>
+                                    <li>
+                                      <a class="dropdown-item" href="#">
+                                         My profile
+                                      </a>
+                                  </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}

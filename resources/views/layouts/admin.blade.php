@@ -80,42 +80,23 @@
                         <p>Add Products</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
+                <li class="{{ Request::is('orders') ? 'active' : '' ; }}">
+                    <a href="{{ url('orders') }}">
+                        <i class="ti-user"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+                <li class="{{ Request::is('users') ? 'active' : '' ; }}">
+                    <a href="{{ url('users') }}">
                         <i class="ti-text"></i>
-                        <p>Typography</p>
+                        <p>Users</p>
                     </a>
                 </li>
-                <li>
-                    <a href="icons.html">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="ti-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="ti-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
+                
+                
+                
+                
+            
             </ul>
     	</div>
     </div>

@@ -10,7 +10,9 @@ class OrderController extends Controller
 {
     public function index(){
         $orders = Order::where('status', '0')->get();
-        return view('admin.orders.index', compact('orders'));
+        $orders_one = Order::where('status', '1')->get();
+        $orders_two = Order::where('status', '2')->get();
+        return view('admin.orders.index', compact('orders','orders_one','orders_two'));
     }
     public function view($id){
         $orders = Order::where('id', $id)->first();
@@ -21,9 +23,5 @@ class OrderController extends Controller
         $orders->status = $request->input('order_status');
         $orders->update();
         return redirect('orders')->with('status',"Order Updated Succesfully");
-    }
-    public function orderhistory(){
-        $orders = Order::where('status', '1')->get();
-        return view('admin.orders.history',compact('orders'));
     }
 }

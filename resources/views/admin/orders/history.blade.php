@@ -24,7 +24,16 @@
                                     <tr>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>{{ $item->total_price }} $</td>
-                                        <td>{{ $item->status == '0' ? 'pending' : 'completed' }}</td>
+                                        {{-- <td>{{ $item->status == '0' ? 'pending' : 'completed' }}</td> --}}
+                                        <td>
+                                            @if ( $item->status == '0' )
+                                                pending
+                                            @elseif( $item->status == '1' )
+                                                tess   
+                                            @else
+                                                completed
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('admin/view-order/'.$item->id) }}" class="btn btn-outline-primary">View</a>
                                         </td>

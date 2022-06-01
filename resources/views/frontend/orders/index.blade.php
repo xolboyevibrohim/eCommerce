@@ -22,12 +22,20 @@ My Orders
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 @foreach ($orders as $item)
                                     <tr>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>{{ $item->total_price }} $</td>
-                                        <td>{{ $item->status == '0' ? 'pending' : 'completed' }}</td>
+                                        <td>
+                                            @if ( $item->status == '0' )
+                                                Qadoqlash jarayonida
+                                            @elseif( $item->status == '1' )
+                                                Yo'lda  
+                                            @else
+                                                Yetkazildi
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-outline-primary">View</a>
                                         </td>

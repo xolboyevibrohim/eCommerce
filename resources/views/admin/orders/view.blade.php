@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header bg-info">
                         <h4 class="text-white">Order View
-                            <a href="{{ url('admin/orders')}}" class="text-white btn btn-dark float-end">Back</a>
+                            <a href="{{ url('/orders')}}" class="text-white btn btn-dark float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -58,8 +58,9 @@
                                         @csrf
                                         @method('PUT')
                                         <select class="form-select" name="order_status">
-                                            <option {{ $orders->status == '0'? 'selected':'' }} value="0">Pending</option>
-                                            <option {{ $orders->status == '1 '? 'selected':'' }} value="1">Completed</option>
+                                            <option {{ $orders->status == '0'? 'selected':'' }} value="0">Qadoqlash jarayonida</option>
+                                            <option {{ $orders->status == '1'? 'selected':'' }} value="1">Yo'lda</option>
+                                            <option {{ $orders->status == '2'? 'selected':'' }} value="2">Yetkazildi</option>
                                         </select>
                                         <button type="submit" class="btn btn-outline-primary m-3">Update</button>
                                     </form>

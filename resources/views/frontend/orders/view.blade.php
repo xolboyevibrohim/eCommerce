@@ -36,6 +36,7 @@ My Orders
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>Order Date</th>
                                             <th>Name</th>
                                             <th>Quantity</th>
                                             <th>Price</th>
@@ -45,6 +46,7 @@ My Orders
                                     <tbody>
                                         @foreach ($orders->orderitems as $item)
                                             <tr>
+                                                <td>{{ date('d-m-Y',strtotime($item->created_at)) }}</td>
                                                 <td>{{ $item->products->name }}</td>
                                                 <td>{{ $item->qty }} </td>
                                                 <td>{{ $item->price }} $</td>

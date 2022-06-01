@@ -8,8 +8,10 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderItem;
 use App\Models\User;
+use Cron\DayOfMonthField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class CheckoutController extends Controller
 {
@@ -24,7 +26,7 @@ class CheckoutController extends Controller
         $cart_item = Cart::where('user_id', Auth::id())->get();
 
         return view('frontend.checkout', compact('cart_item'));
-    }
+    } 
     public function placeorder(Request $request){
         $order = new Order();
         $order->user_id = Auth::id();
@@ -39,10 +41,12 @@ class CheckoutController extends Controller
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
         foreach($cartitems_total as $prod){
+            // $total += $item->products->selling_price * $item->prod_qty;
+
             $total +=$prod->products->selling_price;
         }
         $order->total_price = $total; 
-        $order->tracking_no = 'sharm'.rand(1111,9999);
+        $order->tracking_no = 'A'.rand(1,9999);
         $order->save();
 
         $cart_item = Cart::where('user_id', Auth::id())->get();
@@ -57,10 +61,8 @@ class CheckoutController extends Controller
             $prod->qty = $prod->qty - $item->prod_qty;
             $prod->update();
         }
-        if(Auth::user()->address1 == NULL){
+        if(Auth::user()->adress1 == NULL){
             $user = User::where('id', Auth::id())->first();
-            $user = new user();
-            $user->name = $request->input('fname');
             $user->lname = $request->input('lname');
             $user->phone = $request->input('phone');
             $user->adress1 = $request->input('adress1');
